@@ -6,58 +6,80 @@ body {
   line-height: 1.7;
 }
 
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.main-content {
+  padding-top: 40px; /* extra breathing room under hero */
+}
+
+/* Header bars – Dylan-inspired two-bar layout */
 .top-bar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  background: #000000;
-  border-bottom: 1px solid #222222;
+  height: 100px;
+  background: #0a0a0a; /* deep near-black */
   z-index: 1000;
+  border-bottom: 1px solid #1a1a1a;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
+.nav-bar {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #1a0000; /* subtle deep red accent */
+  z-index: 999;
 }
 
+/* Site title – large, bold, wide-spaced like Dylan's */
 .site-title {
   margin: 0;
-  font-size: 2.4rem;
-  font-weight: 700;
+  font-size: 3.8rem;
+  font-weight: 900;
   color: #ffffff;
-  letter-spacing: 2px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  text-align: center; /* centered for symmetry/minimalism */
+  line-height: 100px; /* vertical center in bar */
 }
 
-.main-nav {
+/* Nav links – wide spacing, uppercase, clean hover */
+.nav-bar .container {
   display: flex;
-  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 100px; /* very wide spacing between links */
 }
 
-.nav-tab {
-  color: #cccccc;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 400;
-  padding: 10px 0;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s;
-}
-
-.nav-tab:hover, .nav-tab.active {
+.nav-link {
   color: #ffffff;
-  border-bottom: 2px solid #b22222;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: color 0.3s ease;
 }
 
+.nav-link:hover,
+.nav-link.active {
+  color: #f0e0e0; /* subtle brighten */
+}
+
+/* Hero – pushed down below fixed headers */
 #hero {
   height: 80vh;
   min-height: 500px;
   position: relative;
-  margin-top: 80px;
+  margin-top: 160px; /* 100px top + 60px nav */
 }
 
 .hero-bg {
@@ -87,6 +109,7 @@ body {
   margin: 0;
 }
 
+/* Tab sections */
 .tab-section {
   display: none;
   padding: 60px 30px;
@@ -117,9 +140,52 @@ iframe {
   max-width: 800px;
 }
 
+/* Bio & Contact */
+#bio, #contact {
+  padding: 60px 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#contact ul {
+  list-style: none;
+  padding: 0;
+}
+
+#contact li {
+  margin: 10px 0;
+}
+
+#contact a {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  color: #ffffff;
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 60px 20px;
   color: #666666;
   border-top: 1px solid #222222;
+}
+
+/* General links */
+a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
