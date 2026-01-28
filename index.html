@@ -10,19 +10,26 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Top black bar with name and tabs -->
-  <header class="top-bar">
-    <div class="container">
-      <h1 class="site-title">KEN KEATS</h1>
-      <nav class="main-nav">
-        <a href="#songs" class="nav-tab active">Songs</a>
-        <a href="#albums" class="nav-tab">Albums</a>
-        <a href="#tour" class="nav-tab">Tour</a>
-      </nav>
+  <header>
+    <!-- Top bar: large name (Dylan-style bold/all-caps focus) -->
+    <div class="top-bar">
+      <div class="container">
+        <h1 class="site-title">KEN KEATS</h1>
+        <!-- Right side intentionally minimal/empty for clean look – add social later if wanted -->
+      </div>
     </div>
+
+    <!-- Second bar: main nav with wide uppercase links -->
+    <nav class="nav-bar">
+      <div class="container">
+        <a href="#songs" class="nav-link active">SONGS</a>
+        <a href="#albums" class="nav-link">ALBUMS</a>
+        <a href="#tour" class="nav-link">TOUR</a>
+      </div>
+    </nav>
   </header>
 
-  <!-- Hero with gig photo -->
+  <!-- Hero with gig photo (pushed down below headers) -->
   <section id="hero">
     <img src="gig-venue.jpg" alt="Live performance" class="hero-bg">
     <div class="hero-overlay">
@@ -31,7 +38,7 @@
     </div>
   </section>
 
-  <main class="container">
+  <main class="container main-content">
     <!-- Songs (default visible) -->
     <section id="songs" class="tab-section active">
       <h2>Songs</h2>
@@ -80,16 +87,16 @@
     <p>Ken Keats | Perth, Western Australia</p>
   </footer>
 
-  <!-- Tab switching JS -->
+  <!-- Tab switching JS (still works with new nav links) -->
   <script>
-    document.querySelectorAll('.nav-tab').forEach(tab => {
-      tab.addEventListener('click', e => {
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', e => {
         e.preventDefault();
-        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
         
         document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
-        const targetId = tab.getAttribute('href').substring(1);
+        const targetId = link.getAttribute('href').substring(1);
         document.getElementById(targetId).classList.add('active');
       });
     });
