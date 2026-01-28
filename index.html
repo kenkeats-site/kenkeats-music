@@ -11,14 +11,12 @@
 </head>
 <body>
   <header>
-    <!-- Top bar: large centered name -->
     <div class="top-bar">
       <div class="container">
         <h1 class="site-title">KEN KEATS</h1>
       </div>
     </div>
 
-    <!-- Nav bar: wide-spaced uppercase links -->
     <nav class="nav-bar">
       <div class="container">
         <a href="#songs" class="nav-link active">SONGS</a>
@@ -28,7 +26,6 @@
     </nav>
   </header>
 
-  <!-- Hero section with headshot (capital E in filename) -->
   <section id="hero">
     <img src="gig-venue.jpg" alt="Live performance venue background" class="hero-bg">
     <div class="hero-overlay">
@@ -39,7 +36,6 @@
   </section>
 
   <main class="container main-content">
-    <!-- Songs tab (default active) -->
     <section id="songs" class="tab-section active">
       <h2>Songs</h2>
       <div class="player">
@@ -50,26 +46,27 @@
       </div>
       <div class="player">
         <h3>YouTube</h3>
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=PLyour-real-playlist-id-here"
-          title="Ken Keats YouTube Playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+        <iframe width="100%" height="315" 
+          src="https://www.youtube.com/embed/videoseries?list=PLyour-real-playlist-id-here&rel=0" 
+          title="Ken Keats YouTube Playlist" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen 
           loading="lazy"></iframe>
         <p><a href="https://www.youtube.com/@TheKenKeats" target="_blank">View full channel →</a></p>
       </div>
     </section>
 
-    <!-- Albums tab -->
     <section id="albums" class="tab-section">
       <h2>Albums</h2>
       <p>Discography coming soon. Album artwork and links will appear here.</p>
     </section>
 
-    <!-- Tour tab -->
     <section id="tour" class="tab-section">
       <h2>Tour</h2>
       <p>Upcoming dates — check back soon for Perth and beyond shows.</p>
     </section>
 
-    <!-- Bio – always visible -->
     <section id="bio">
       <h2>The Rambler</h2>
       
@@ -89,7 +86,6 @@
       <p>That’s the path so far: from a ditch to a stage, from a tambourine to this. The road keeps going.</p>
     </section>
 
-    <!-- Contact – always visible -->
     <section id="contact">
       <h2>Contact</h2>
       <ul>
@@ -103,7 +99,6 @@
     <p>Ken Keats | Perth, Western Australia</p>
   </footer>
 
-  <!-- Tab switching JavaScript -->
   <script>
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', function(e) {
