@@ -1,264 +1,11 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: 'EB Garamond', serif;
-  background: #111111;
-  color: #d4d4d4;
-  line-height: 1.8;
-}
-
-.container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-.main-content {
-  padding-top: 40px;
-}
-
-/* Header */
-.top-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: #0a0a0a;
-  z-index: 1000;
-  border-bottom: 1px solid #1a1a1a;
-}
-
-.nav-bar {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: #1a0000;
-  z-index: 999;
-}
-
-.site-title {
-  margin: 0;
-  font-size: 3.8rem;
-  font-weight: 900;
-  color: #ffffff;
-  letter-spacing: 8px;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 100px;
-}
-
-.nav-bar .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  gap: 90px;
-}
-
-.nav-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1.25rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: #f0e0e0;
-}
-
-/* Hero */
-#hero {
-  position: relative;
-  height: 70vh;
-  min-height: 450px;
-  max-height: 700px;
-  margin-top: 160px;
-  overflow: hidden;
-}
-
-.hero-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  filter: brightness(0.45);
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #ffffff;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 35px;
-}
-
-.hero-headshot {
-  width: 380px;
-  height: 380px;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 16px;
-  border: 5px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 12px 50px rgba(0,0,0,0.8);
-  transition: transform 0.3s ease;
-}
-
-.hero-headshot:hover {
-  transform: scale(1.04);
-}
-
-.hero-overlay h2 {
-  font-size: 3.8rem;
-  margin: 0;
-}
-
-.hero-overlay p {
-  font-size: 1.6rem;
-  margin: 10px 0 0;
-}
-
-/* Tabs & players */
-.tab-section {
-  display: none;
-  padding: 60px 20px;
-}
-
-.tab-section.active {
-  display: block;
-}
-
-h2 {
-  font-size: 3.4rem;
-  text-align: center;
-  margin-bottom: 45px;
-  color: #eeeeee;
-}
-
-.player {
-  margin: 50px 0;
-  text-align: center;
-}
-
-iframe {
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  width: 100%;
-  max-width: 820px;
-}
-
-/* Bio */
-#bio {
-  padding: 80px 20px;
-  text-align: center;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-#bio h2 {
-  font-size: 4rem;
-  margin-bottom: 60px;
-  letter-spacing: 1.5px;
-}
-
-#bio p {
-  font-size: 1.45rem;
-  font-weight: 400;
-  line-height: 1.95;
-  margin: 0 auto 2rem;
-  max-width: 820px;
-  color: #e8e8e8;
-  text-shadow: 0 1px 5px rgba(0,0,0,0.6);
-}
-
-.bio-images {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 50px;
-  flex-wrap: wrap;
-}
-
-.bio-portrait {
-  max-width: 300px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-/* Contact */
-#contact {
-  padding: 80px 20px;
-  text-align: center;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-#contact h2 {
-  font-size: 3.4rem;
-}
-
-#contact ul {
-  list-style: none;
-  padding: 0;
-  margin: 30px 0 0;
-}
-
-#contact li {
-  margin: 15px 0;
-}
-
-#contact a {
-  color: #cccccc;
-  font-size: 1.3rem;
-}
-
-#contact a:hover {
-  color: #ffffff;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 80px 20px;
-  color: #666666;
-  border-top: 1px solid #222222;
-  font-size: 1rem;
-}
-
-/* General */
-a {
-  color: #cccccc;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: #ffffff;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Enhanced mobile adjustments – this should fix most "off" formatting */
+/* Enhanced mobile adjustments */
 @media (max-width: 768px) {
   body {
-    font-size: 16px; /* base font boost for readability */
+    font-size: 16px; /* base boost for better readability */
+  }
+
+  .container {
+    padding: 0 20px; /* less side padding on narrow screens */
   }
 
   .top-bar {
@@ -277,8 +24,8 @@ html {
   }
 
   .nav-bar .container {
-    gap: 20px;
-    padding: 0 15px;
+    gap: 25px;
+    padding: 0 10px;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -286,12 +33,14 @@ html {
   .nav-link {
     font-size: 1rem;
     padding: 8px 12px;
+    white-space: nowrap; /* prevent awkward wrapping */
   }
 
   #hero {
-    margin-top: 120px; /* reduced to prevent huge gap/overlap */
+    margin-top: 120px; /* reduced gap to prevent huge blank space */
     height: 50vh;
     min-height: 280px;
+    max-height: 500px;
   }
 
   .hero-headshot {
@@ -299,12 +48,18 @@ html {
     height: 220px;
   }
 
+  .hero-overlay {
+    gap: 20px;
+  }
+
   .hero-overlay h2 {
     font-size: 2.4rem;
+    line-height: 1.2;
   }
 
   .hero-overlay p {
     font-size: 1.1rem;
+    padding: 0 10px;
   }
 
   h2 {
@@ -313,11 +68,19 @@ html {
   }
 
   .tab-section {
-    padding: 40px 15px;
+    padding: 40px 10px;
+  }
+
+  .player {
+    margin: 30px 0;
+  }
+
+  .player iframe {
+    height: 180px; /* smaller embeds to fit mobile */
   }
 
   #bio {
-    padding: 50px 15px;
+    padding: 50px 10px;
   }
 
   #bio h2 {
@@ -325,7 +88,7 @@ html {
   }
 
   #bio p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     line-height: 1.8;
   }
 
@@ -337,20 +100,17 @@ html {
     max-width: 220px;
   }
 
-  .player iframe {
-    height: 180px; /* smaller video embeds on mobile */
-  }
-
   #contact {
-    padding: 50px 15px;
+    padding: 50px 10px;
   }
 
   footer {
-    padding: 50px 15px;
+    padding: 50px 10px;
+    font-size: 0.95rem;
   }
 }
 
-/* Extra small screens (e.g. very narrow phones) */
+/* Very small screens (e.g. older/small phones) */
 @media (max-width: 480px) {
   .container {
     padding: 0 15px;
@@ -360,11 +120,29 @@ html {
     gap: 15px;
   }
 
+  .nav-link {
+    font-size: 0.95rem;
+  }
+
+  #hero {
+    margin-top: 110px;
+    height: 45vh;
+  }
+
+  .hero-headshot {
+    width: 180px;
+    height: 180px;
+  }
+
   .hero-overlay h2 {
     font-size: 2.2rem;
   }
 
   .hero-overlay p {
     font-size: 1rem;
+  }
+
+  #bio p {
+    font-size: 1.15rem;
   }
 }
