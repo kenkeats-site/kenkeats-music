@@ -7,79 +7,92 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Ken Keats</h1>
-    <p class="tagline">Songs from the road and the quiet hours</p>
+  <!-- Top black bar with name and tabs -->
+  <header class="top-bar">
+    <div class="container">
+      <h1 class="site-title">KEN KEATS</h1>
+      <nav class="main-nav">
+        <a href="#songs" class="nav-tab active">Songs</a>
+        <a href="#albums" class="nav-tab">Albums</a>
+        <a href="#tour" class="nav-tab">Tour</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section id="hero">
-      <img src="hero-bridge.jpg" alt="Ken Keats walking along the Danube in rain" class="hero-image">
-      <div class="hero-overlay">
-        <h2>Drifter's Hymns</h2>
-      </div>
-    </section>
+  <!-- Hero with gig photo -->
+  <section id="hero">
+    <img src="gig-venue.jpg" alt="Live performance" class="hero-bg">
+    <div class="hero-overlay">
+      <h2>Live from the Underground</h2>
+      <p>Thought-provoking tales from Perth's hidden stages</p>
+    </div>
+  </section>
 
-    <section id="bio">
-      <h2>The Rambler</h2>
-      <p>I was lost down a ditch early, then a drifter came by and taught me the tambourine. I hitched rides out east to play the circus, but they wouldn’t have me. So I begged on main street for a while till a bad-time woman took me in and showed me what women could do. I picked up the guitar at her place and began rambling around, searching out souls that knew the beat of life—Blind Willie, the forgotten people. Late-night bars to sailors fresh off the wharf; bad sets earned growls: “You gotta know how to play your axe, boy.” And that was that.</p>
-      
-      <p>Scrimped my way back home to the west. The songs found shape—sweet folk for solitary hours, telling stories central to the human heart. Echoes of the great ones: Dylan’s riddle, Young’s ache, Springsteen’s thunder—filtered through thought-provoking lyrics and melodies that twist like backroads. Four years of solo rounds through Perth streets and venues honed the blade. In 2013 I formed a band called Kenneth Rogers and the Lucid Dream to carry the fire further when the moment calls for it.</p>
-      
-      <p>These are songs for the lost, the searching, the ones who still hear the pulse beneath the noise.</p>
-    </section>
-
-    <hr>
-
-    <section id="gallery">
-      <h2>Moments on the Road</h2>
-      <div class="gallery-grid">
-        <img src="photo-stage.jpg" alt="On stage">
-        <img src="photo-portrait1.jpg" alt="Portrait">
-        <img src="photo-portrait2.jpg" alt="Portrait with scarf">
-        <img src="hero-bridge.jpg" alt="Walking in rain">
-        <!-- Add more <img src="your-file.jpg"> as you upload -->
-      </div>
-    </section>
-
-    <hr>
-
-    <section id="music">
-      <h2>Listen</h2>
+  <main class="container">
+    <!-- Songs (default visible) -->
+    <section id="songs" class="tab-section active">
+      <h2>Songs</h2>
       <div class="player">
         <h3>SoundCloud</h3>
-        <iframe width="100%" height="400" scrolling="no" frameborder="no" allow="autoplay" 
-          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ennethogersandheucidream/tracks">
-        </iframe>
+        <iframe width="100%" height="400" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ennethogersandheucidream/tracks"></iframe>
       </div>
-      
       <div class="player">
         <h3>YouTube</h3>
         <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UU" 
-          title="Ken Keats YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
+          title="Ken Keats YouTube" frameborder="0" allowfullscreen></iframe>
         <p><a href="https://www.youtube.com/@TheKenKeats" target="_blank">Full channel →</a></p>
       </div>
     </section>
 
-    <hr>
+    <!-- Albums -->
+    <section id="albums" class="tab-section">
+      <h2>Albums</h2>
+      <p>Discography coming soon.</p>
+    </section>
 
+    <!-- Tour -->
+    <section id="tour" class="tab-section">
+      <h2>Tour</h2>
+      <p>Upcoming dates — check back soon.</p>
+    </section>
+
+    <!-- Bio (always visible below tabs) -->
+    <section id="bio">
+      <h2>The Rambler</h2>
+      <p>Your bio text here...</p>
+    </section>
+
+    <!-- Contact -->
     <section id="contact">
-      <h2>Reach Out</h2>
-      <p>For gigs, stories, or the quiet hours.</p>
-      <ul class="socials">
-        <li><a href="https://soundcloud.com/ennethogersandheucidream" target="_blank">SoundCloud</a></li>
-        <li><a href="https://www.youtube.com/@TheKenKeats" target="_blank">YouTube</a></li>
+      <h2>Contact</h2>
+      <ul>
+        <li><a href="https://soundcloud.com/ennethogersandheucidream">SoundCloud</a></li>
+        <li><a href="https://www.youtube.com/@TheKenKeats">YouTube</a></li>
       </ul>
-      <p class="note">New hymns & dates on the horizon.</p>
     </section>
   </main>
 
   <footer>
     <p>Ken Keats | Perth, Western Australia</p>
   </footer>
+
+  <!-- Tab switching JS -->
+  <script>
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+        const targetId = tab.getAttribute('href').substring(1);
+        document.getElementById(targetId).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
