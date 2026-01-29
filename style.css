@@ -93,23 +93,16 @@ body {
   color: #f0e0e0;
 }
 
-/* Hero – contain fit to show more/full bridge */
+/* Hero – background-image with contain to show full bridge + figure vibe */
 #hero {
   position: relative;
-  height: 55vh; /* slightly taller to show more image */
-  min-height: 380px;
-  max-height: 600px;
+  height: 60vh; /* taller to show more of the image */
+  min-height: 400px;
+  max-height: 700px;
   margin-top: 260px;
+  background: #000000 url('hero-bridge.jpg') no-repeat center bottom; /* full image, positioned to show path/figure walking into distance */
+  background-size: contain; /* full composition visible, no zoom/crop */
   overflow: hidden;
-  background: #000000; /* dark fill for any bars from contain */
-}
-
-.hero-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* shows full image – more of the bridge visible, no crop */
-  object-position: center;
-  filter: brightness(0.5);
 }
 
 .hero-overlay {
@@ -258,7 +251,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* MOBILE */
+/* MOBILE – polished */
 @media (max-width: 768px) {
   body {
     font-size: 16px;
@@ -302,12 +295,8 @@ html {
 
   #hero {
     margin-top: 190px;
-    height: 42vh; /* slightly taller on mobile to show more image */
+    height: 45vh;
     min-height: 280px;
-  }
-
-  .hero-bg {
-    object-fit: contain; /* full bridge visible on mobile too */
   }
 
   .hero-overlay h2 {
