@@ -93,15 +93,15 @@ body {
   color: #f0e0e0;
 }
 
-/* Hero – zoomed out to show full bridge composition (figure/path/distance/river/city) */
+/* Hero – zoomed out more to show full bridge composition */
 #hero {
   position: relative;
   height: 70vh;
   min-height: 450px;
   max-height: 800px;
   margin-top: 260px;
-  background: url('hero-bridge.jpg') no-repeat center bottom;
-  background-size: 130%; /* zoomed out – shows much more of the full image */
+  background: url('hero-bridge.jpg') no-repeat center 85%; /* 85% pulls up to show more upper body/figure while keeping path/distance */
+  background-size: 150%; /* zoomed out further – shows much more of the full image */
   background-color: #000000;
   overflow: hidden;
 }
@@ -123,10 +123,12 @@ body {
 }
 
 .hero-overlay p {
-  font-size: 2.2rem;
+  font-size: 2.5rem; /* slightly bigger */
   margin: 0;
   font-weight: 500;
   letter-spacing: 1px;
+  color: #b22222; /* red accent */
+  text-shadow: 0 0 10px #b22222, 0 0 20px #b22222, 0 0 30px #b22222, 0 0 40px #8b0000; /* glowing cigarette end in smoke effect */
 }
 
 /* Tabs & players */
