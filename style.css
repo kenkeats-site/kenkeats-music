@@ -93,15 +93,15 @@ body {
   color: #f0e0e0;
 }
 
-/* Hero – full height visible, no zoom/crop on vertical */
+/* Hero – adjusted to show your head/full upper body + path/distance */
 #hero {
   position: relative;
   height: 70vh;
   min-height: 450px;
   max-height: 800px;
   margin-top: 260px;
-  background: url('hero-bridge.jpg') no-repeat center bottom;
-  background-size: 100% auto; /* full width, auto height – shows full vertical composition (head to path/distance) */
+  background: url('hero-bridge.jpg') no-repeat center 30%; /* 30% pulls up to show your head/upper body while keeping path/distance */
+  background-size: cover; /* fills screen */
   background-color: #000000;
   overflow: hidden;
 }
@@ -126,7 +126,7 @@ body {
   font-size: 2.2rem;
   margin: 0;
   font-weight: 500;
-Cada letter-spacing: 1px;
+  letter-spacing: 1px;
 }
 
 /* Tabs & players */
