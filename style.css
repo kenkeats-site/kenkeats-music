@@ -89,11 +89,11 @@ body {
 }
 
 .nav-link:hover,
-.nav-link.active {
+.nav-link.active. {
   color: #f0e0e0;
 }
 
-/* Hero – zoomed out to show more of bridge composition (figure/path/distance) */
+/* Hero – zoomed out to show full bridge composition (figure/path/distance/river/city) */
 #hero {
   position: relative;
   height: 70vh; /* taller to show more */
@@ -101,7 +101,7 @@ body {
   max-height: 800px;
   margin-top: 260px;
   background: url('hero-bridge.jpg') no-repeat center bottom;
-  background-size: 140%; /* zoomed out – shows much more of the image */
+  background-size: 120%; /* zoomed out – shows much more of the full image */
   background-color: #000000;
   overflow: hidden;
 }
