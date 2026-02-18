@@ -16,7 +16,7 @@ body {
 .main-content {
   padding-top: 40px;
 }
-/* Top bar – bigger banner */
+/* Top bar */
 .top-bar {
   position: fixed;
   top: 0;
@@ -165,37 +165,28 @@ iframe {
   color: #ffffff;
   background: rgba(74, 0, 0, 0.3);
 }
-/* Poems layout – sidebar RIGHT, poems LEFT */
+/* Layout: sidebar LEFT, poems RIGHT */
 .poems-layout {
   display: flex;
   gap: 40px;
   max-width: 1400px;
   margin: 0 auto;
-  position: relative;
 }
 
-/* Sidebar – RIGHT sticky */
+/* Left sidebar – discrete sticky number menu */
 .sonnet-sidebar {
-  flex: 1 1 240px;
+  flex: 0 0 80px;               /* narrow for discreteness */
   position: sticky;
-  top: 260px; /* Adjust if your header is taller/shorter */
+  top: 260px;                   /* header + nav height */
   align-self: start;
-  background: rgba(20, 20, 20, 0.7);
-  padding: 20px 16px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  max-height: calc(100vh - 300px);
-  overflow-y: auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  text-align: center;
+  background: transparent;
+  padding: 10px 0;
 }
 
+/* Remove title and make numbers minimal */
 .sonnet-sidebar h3 {
-  font-size: 1.4rem;
-  margin: 0 0 16px;
-  text-align: center;
-  color: #ddd;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #444;
+  display: none;
 }
 
 .sonnet-sidebar ul {
@@ -205,27 +196,25 @@ iframe {
 }
 
 .sonnet-sidebar li {
-  margin: 6px 0;
+  margin: 12px 0;
 }
 
 .sonnet-sidebar a {
   display: block;
-  padding: 8px 12px;
-  color: #cccccc;
+  color: #888;
+  font-size: 1.1rem;
   text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  font-size: 1.05rem;
+  padding: 4px 0;
+  transition: color 0.2s;
 }
 
 .sonnet-sidebar a:hover {
-  background: rgba(74, 0, 0, 0.5);
   color: #fff;
 }
 
 /* Main poems content */
 .poems-main {
-  flex: 3 1 0;
+  flex: 1;
   min-width: 0;
 }
 
@@ -360,14 +349,9 @@ html {
   .sonnet-sidebar {
     position: static;
     top: auto;
-    max-height: none;
-    background: rgba(20, 20, 20, 0.4);
-    padding: 16px;
-    border: 1px solid #444;
-  }
-
-  .sonnet-sidebar h3 {
-    display: block;
+    flex: none;
+    width: 100%;
+    text-align: center;
   }
 
   .sonnet-sidebar ul {
