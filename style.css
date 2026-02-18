@@ -170,23 +170,25 @@ iframe {
 /* Layout: left numbers + right poems */
 .poems-layout {
   display: flex;
-  gap: 4px; /* minimal – numbers hard against red line */
+  gap: 0; /* zero gap – numbers hard against red line */
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Left sidebar – discrete numbers only */
+/* Left sidebar – ultra-discrete numbers */
 .sonnet-sidebar {
-  flex: 0 0 32px; /* ultra-narrow */
+  flex: 0 0 28px; /* ultra-narrow */
   position: sticky;
   top: 260px;
   align-self: start;
   text-align: right;
   padding: 0;
-  margin-right: 0;
+  margin: 0;
   background: transparent;
   border: none;
   box-shadow: none;
+  max-height: none;
+  overflow: visible;
 }
 
 /* Numbers – clean, full list */
@@ -197,7 +199,7 @@ iframe {
 }
 
 .sonnet-sidebar li {
-  margin: 26px 0; /* vertical spacing to match poem height */
+  margin: 26px 0; /* vertical spacing to align with poem blocks */
 }
 
 .sonnet-sidebar a {
@@ -259,7 +261,7 @@ iframe {
   display: block;
 }
 
-/* Bio, Contact, Footer – unchanged */
+/* Bio, Contact, Footer */
 #bio {
   padding: 80px 20px;
   text-align: center;
