@@ -17,16 +17,15 @@
         <h1 class="site-title">KEN KEATS</h1>
       </div>
     </div>
-
     <nav class="nav-bar">
       <div class="container">
         <a href="#songs" class="nav-link active">SONGS</a>
         <a href="#albums" class="nav-link">ALBUMS</a>
         <a href="#tour" class="nav-link">TOUR</a>
+        <a href="#poems" class="nav-link">POEMS</a>
       </div>
     </nav>
   </header>
-
   <!-- Hero -->
   <section id="hero">
     <div class="hero-overlay">
@@ -34,52 +33,83 @@
       <p>Blazing Relativity</p>
     </div>
   </section>
-
   <main class="container main-content">
     <section id="songs" class="tab-section active">
       <h2>Songs</h2>
       <!-- SoundCloud player removed -->
       <div class="player">
         <h3>YouTube</h3>
-        <iframe width="100%" height="315" 
-          src="https://www.youtube.com/embed/PCxGn175QfQ?rel=0&modestbranding=1" 
-          title="Ken Keats - A Lady’s Way" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen 
+        <iframe width="100%" height="315"
+          src="https://www.youtube.com/embed/PCxGn175QfQ?rel=0&modestbranding=1"
+          title="Ken Keats - A Lady’s Way"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
           loading="lazy"></iframe>
         <p><a href="https://www.youtube.com/@TheKenKeats" target="_blank">View full channel →</a></p>
       </div>
     </section>
-
     <section id="albums" class="tab-section">
       <h2>Albums</h2>
       <p>Discography coming soon. Album artwork and links will appear here.</p>
     </section>
-
     <section id="tour" class="tab-section">
       <h2>Tour</h2>
       <p>Upcoming dates, check back soon for Perth and beyond shows.</p>
     </section>
+    <section id="poems" class="tab-section">
+      <h2>Poems</h2>
+      <div class="poems-container">
+        <!-- Example poem entry – replace or duplicate as needed -->
+        <article class="poem">
+          <h3>The Ditch Tambourine</h3>
+          <p class="poem-date">Perth, 2024</p>
+          <div class="poem-text">
+            Half-buried in the red dirt,<br>
+            ribs rattling like dry bones,<br>
+            a stranger drops a skin and hoop—<br>
+            says, “Shake what the devil left you.”<br><br>
+            
+            I did. The highway listened.<br>
+            Stars fell like loose change.<br>
+            Now every chord I play<br>
+            still carries gravel in its throat.
+          </div>
+        </article>
 
+        <!-- Add more poems here -->
+        <article class="poem">
+          <h3>Crossroads Dust</h3>
+          <p class="poem-date">Somewhere east of Kalgoorlie, 2025</p>
+          <div class="poem-text">
+            The moon hangs low like a bad debt,<br>
+            road tar still warm under bare feet.<br>
+            Guitar case heavy with ghosts—<br>
+            each string tuned to regret.<br><br>
+            
+            I wait for the devil or the dawn,<br>
+            whichever comes first with a deal.<br>
+            Neither shows. Just wind and wire,<br>
+            and the long howl of what’s real.
+          </div>
+        </article>
+
+        <p class="coming-soon" style="text-align: center; font-style: italic; color: #888; margin-top: 60px;">
+          More poems added soon – the road keeps whispering.
+        </p>
+      </div>
+    </section>
     <section id="bio">
       <h2>The Rambler</h2>
-      
       <div class="bio-main-image">
         <img src="Final.jpg" alt="Ken Keats" class="bio-main-portrait">
       </div>
-
       <p>I was lost down a ditch early in life, half-buried in the dirt of bad choices and worse luck, when a drifter wandered by and handed me a tambourine. That simple gift rattled something awake inside me. I hitched rides out east, chasing the dream of the circus ring, but they turned me away at the gate, no room for a ragged kid with no name and no tricks. So I begged on main street for scraps, until a woman from hard times took me in. She showed me what women could do when the world tried to break them, and in her place I picked up a guitar for the first time. From there I began to ramble, searching out souls who still knew the real beat of life: Blind Willie’s haunting slide, Robert Johnson’s crossroads howl, the forgotten ones who sang because they had to.</p>
-
       <p>I played late-night bars down by the wharf, where sailors fresh off the ships would stagger in, salt-crusted and restless. If my set went sour, one of them would pull me aside in the dim light and growl, “You gotta know how to play your axe, boy.” That was the lesson that stuck. I scrimped and saved my way back home, carrying scars and songs that finally found their shape.</p>
-
       <p>The music that came out of those years draws deep from the great songwriters of the last century, Dylan, Young, Springsteen, and their kin, centering on thought-provoking lyrics and melodies that twist in unexpected ways. Solo, it’s sweet folk: gentle arrangements wrapped around stories at the core of the human experience, love, loss, the long road, the quiet ache. With the band, it shifts to a folk-rock edge, each song a different shade, a different story, full of grit and lift.</p>
-
       <p>For the last four years I’ve played solo around Perth, honing the craft in small rooms and hidden stages, learning what lands and what lingers. In 2013 the band came together, called the Lucid Dream, and the sound found its full shape.</p>
-
       <p>That’s the path so far: from a ditch to a stage, from a tambourine to this. The road keeps going.</p>
     </section>
-
     <section id="contact">
       <h2>Contact</h2>
       <ul>
@@ -88,18 +118,15 @@
       </ul>
     </section>
   </main>
-
   <footer>
     <p>Ken Keats | Perth, Western Australia</p>
   </footer>
-
   <script>
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         this.classList.add('active');
-
         document.querySelectorAll('.tab-section').forEach(section => {
           section.classList.remove('active');
         });
