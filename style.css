@@ -12,10 +12,11 @@ body {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
+  overflow: visible !important;
 }
 .main-content {
   padding-top: 40px;
-  overflow: visible !important; /* critical for sticky to work */
+  overflow: visible !important;
 }
 /* Top bar */
 .top-bar {
@@ -169,12 +170,12 @@ iframe {
 /* Layout: left numbers + right poems */
 .poems-layout {
   display: flex;
-  gap: 20px; /* reduced gap – numbers very close to red line */
+  gap: 10px; /* tight gap – numbers very close to red line */
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Left sidebar – minimal numbers only */
+/* Left sidebar – ultra-discrete numbers */
 .sonnet-sidebar {
   flex: 0 0 40px; /* extremely narrow */
   position: sticky;
@@ -182,10 +183,13 @@ iframe {
   align-self: start;
   text-align: right;
   padding: 0;
-  margin-right: 0; /* no extra space */
+  margin-right: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-/* Numbers – clean and close */
+/* Numbers – minimal */
 .sonnet-sidebar ul {
   list-style: none;
   padding: 0;
@@ -193,7 +197,7 @@ iframe {
 }
 
 .sonnet-sidebar li {
-  margin: 22px 0; /* vertical spacing to roughly match poem height */
+  margin: 24px 0; /* spacing to align with poem blocks */
 }
 
 .sonnet-sidebar a {
@@ -208,7 +212,7 @@ iframe {
   color: #fff;
 }
 
-/* Main poems – right side */
+/* Main poems */
 .poems-main {
   flex: 1;
   min-width: 0;
@@ -219,10 +223,10 @@ iframe {
   margin: 0 auto;
 }
 
-/* Poem styling – red line close to numbers */
+/* Poem styling – red line hugs left */
 .poem {
   margin-bottom: 70px;
-  padding: 0 20px 0 0; /* no left padding – red line hugs left */
+  padding: 0 20px 0 0; /* no left padding */
   scroll-margin-top: 240px;
 }
 
@@ -247,6 +251,12 @@ iframe {
   border-left: 4px solid #4a0000;
   border-radius: 0 8px 8px 0;
   box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+}
+
+.poem-text br {
+  content: "";
+  margin-bottom: 1.2em;
+  display: block;
 }
 
 /* Bio, Contact, Footer – unchanged */
