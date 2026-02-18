@@ -15,7 +15,7 @@ body {
 }
 .main-content {
   padding-top: 40px;
-  overflow: visible; /* important for sticky sidebar */
+  overflow: visible !important; /* critical for sticky to work */
 }
 /* Top bar */
 .top-bar {
@@ -166,25 +166,26 @@ iframe {
   color: #ffffff;
   background: rgba(74, 0, 0, 0.3);
 }
-/* Layout: sidebar LEFT, poems RIGHT */
+/* Layout: left numbers + right poems */
 .poems-layout {
   display: flex;
-  gap: 60px; /* space between numbers and poem red line */
+  gap: 20px; /* reduced gap – numbers very close to red line */
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Left sidebar – discrete numbers only */
+/* Left sidebar – minimal numbers only */
 .sonnet-sidebar {
-  flex: 0 0 50px; /* very narrow */
+  flex: 0 0 40px; /* extremely narrow */
   position: sticky;
   top: 260px;
   align-self: start;
   text-align: right;
   padding: 0;
+  margin-right: 0; /* no extra space */
 }
 
-/* Numbers styling – minimal */
+/* Numbers – clean and close */
 .sonnet-sidebar ul {
   list-style: none;
   padding: 0;
@@ -192,13 +193,13 @@ iframe {
 }
 
 .sonnet-sidebar li {
-  margin: 20px 0; /* vertical spacing to align with poem blocks */
+  margin: 22px 0; /* vertical spacing to roughly match poem height */
 }
 
 .sonnet-sidebar a {
   display: block;
   color: #555;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -218,10 +219,10 @@ iframe {
   margin: 0 auto;
 }
 
-/* Poem styling */
+/* Poem styling – red line close to numbers */
 .poem {
   margin-bottom: 70px;
-  padding: 0 20px;
+  padding: 0 20px 0 0; /* no left padding – red line hugs left */
   scroll-margin-top: 240px;
 }
 
@@ -248,13 +249,7 @@ iframe {
   box-shadow: 0 4px 25px rgba(0,0,0,0.5);
 }
 
-.poem-text br {
-  content: "";
-  margin-bottom: 1.2em;
-  display: block;
-}
-
-/* Bio */
+/* Bio, Contact, Footer – unchanged */
 #bio {
   padding: 80px 20px;
   text-align: center;
@@ -288,7 +283,6 @@ iframe {
   hyphens: auto;
   padding: 0 20px;
 }
-/* Contact */
 #contact {
   padding: 80px 20px;
   text-align: center;
@@ -313,7 +307,6 @@ iframe {
 #contact a:hover {
   color: #ffffff;
 }
-/* Footer */
 footer {
   text-align: center;
   padding: 80px 20px;
