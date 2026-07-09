@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <div class="top-bar">
       <div class="container header-container">
@@ -19,20 +20,22 @@
     </div>
     <nav class="nav-bar">
       <div class="container">
-        <a href="#songs" class="nav-link active">SONGS</a>
+        <a href="#songs" class="nav-link active" aria-current="page">SONGS</a>
         <a href="#albums" class="nav-link">ALBUMS</a>
         <a href="#tour" class="nav-link">TOUR</a>
         <a href="#poems" class="nav-link">POEMS</a>
+        <a href="#bio" class="nav-link">ABOUT</a>
+        <a href="#contact" class="nav-link">CONTACT</a>
       </div>
     </nav>
   </header>
   <section id="hero">
     <div class="hero-overlay">
-      <h2>Album Coming Soon</h2>
-      <p>Blazing Relativity</p>
+      <p class="hero-eyebrow">Album Coming Soon</p>
+      <h2>Blazing Relativity</h2>
     </div>
   </section>
-  <main class="container main-content">
+  <main id="main" class="container main-content">
     <section id="songs" class="tab-section active">
       <h2>Songs</h2>
       <div class="player">
@@ -44,7 +47,7 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
           loading="lazy"></iframe>
-        <p><a href="https://www.youtube.com/@TheKenKeats" target="_blank">View full channel →</a></p>
+        <p><a href="https://www.youtube.com/@TheKenKeats" target="_blank" rel="noopener">View full channel →</a></p>
       </div>
     </section>
     <section id="albums" class="tab-section">
@@ -57,8 +60,8 @@
     </section>
     <section id="poems" class="tab-section">
       <h2>Poems</h2>
-      <!-- Top horizontal menu -->
-      <nav class="sonnet-nav top-nav">
+      <!-- Sonnet jump menu: shown on mobile/tablet only (sidebar handles desktop) -->
+      <nav class="sonnet-nav top-nav" aria-label="Sonnet navigation">
         <ul>
           <li><a href="#sonnet-1">Sonnet 1</a></li>
           <li><a href="#sonnet-2">Sonnet 2</a></li>
@@ -93,8 +96,8 @@
         </ul>
       </nav>
       <div class="poems-layout">
-        <!-- Left: sticky discrete numbers -->
-        <aside class="sonnet-sidebar">
+        <!-- Left: sticky numbers with reading position highlight (desktop only) -->
+        <aside class="sonnet-sidebar" aria-label="Sonnet navigation">
           <ul>
             <li><a href="#sonnet-1">1</a></li>
             <li><a href="#sonnet-2">2</a></li>
@@ -922,7 +925,7 @@
         </div>
       </div>
     </section>
-    <section id="bio">
+    <section id="bio" class="tab-section">
       <h2>The Rambler</h2>
       <div class="bio-main-image">
         <img src="Final.jpg" alt="Ken Keats" class="bio-main-portrait">
@@ -933,11 +936,11 @@
       <p>For the last four years I’ve played solo around Perth, honing the craft in small rooms and hidden stages, learning what lands and what lingers. In 2013 the band came together, called the Lucid Dream, and the sound found its full shape.</p>
       <p>That’s the path so far: from a ditch to a stage, from a tambourine to this. The road keeps going.</p>
     </section>
-    <section id="contact">
+    <section id="contact" class="tab-section">
       <h2>Contact</h2>
       <ul>
-        <li><a href="https://soundcloud.com/ennethogersandheucidream" target="_blank">SoundCloud</a></li>
-        <li><a href="https://www.youtube.com/@TheKenKeats" target="_blank">YouTube</a></li>
+        <li><a href="https://soundcloud.com/ennethogersandheucidream" target="_blank" rel="noopener">SoundCloud</a></li>
+        <li><a href="https://www.youtube.com/@TheKenKeats" target="_blank" rel="noopener">YouTube</a></li>
       </ul>
     </section>
   </main>
@@ -945,22 +948,82 @@
     <p>Ken Keats | Perth, Western Australia</p>
   </footer>
   <script>
+    /* ---------- Shrinking header ---------- */
+    const setScrolled = () => {
+      document.body.classList.toggle('scrolled', window.scrollY > 60);
+    };
+    window.addEventListener('scroll', setScrolled, { passive: true });
+    setScrolled();
+
+    /* Respect reduced-motion preferences for JS-driven scrolling */
+    const scrollMode = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+
+    /* ---------- Tabs ---------- */
+    function activateTab(id) {
+      const section = document.getElementById(id);
+      if (!section || !section.classList.contains('tab-section')) return false;
+      document.querySelectorAll('.nav-link').forEach(link => {
+        const isActive = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('active', isActive);
+        if (isActive) {
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+      document.querySelectorAll('.tab-section').forEach(s => {
+        s.classList.toggle('active', s === section);
+      });
+      return true;
+    }
+
     document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
+      link.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-        document.querySelectorAll('.tab-section').forEach(section => {
-          section.classList.remove('active');
-        });
-        const targetId = this.getAttribute('href').substring(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-          target.classList.add('active');
-          target.scrollIntoView({ behavior: 'smooth' });
+        const id = this.getAttribute('href').substring(1);
+        if (activateTab(id)) {
+          history.pushState(null, '', '#' + id);
+          document.getElementById(id).scrollIntoView({ behavior: scrollMode });
         }
       });
     });
+
+    /* ---------- Deep links, page reloads, back/forward ---------- */
+    function openFromHash() {
+      const hash = location.hash.slice(1);
+      if (!hash) { activateTab('songs'); return; }
+      /* Hash is a tab (e.g. #poems, #bio) */
+      if (activateTab(hash)) {
+        document.getElementById(hash).scrollIntoView();
+        return;
+      }
+      /* Hash is inside a tab (e.g. #sonnet-28) — open its tab first */
+      const el = document.getElementById(hash);
+      const parentTab = el && el.closest('.tab-section');
+      if (parentTab) {
+        activateTab(parentTab.id);
+        el.scrollIntoView();
+      }
+    }
+    window.addEventListener('DOMContentLoaded', openFromHash);
+    window.addEventListener('popstate', openFromHash);
+
+    /* ---------- Highlight the sonnet being read in the sidebar ---------- */
+    const sidebarLinks = new Map();
+    document.querySelectorAll('.sonnet-sidebar a').forEach(a => {
+      sidebarLinks.set(a.getAttribute('href').slice(1), a);
+    });
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        document.querySelectorAll('.sonnet-sidebar a.current').forEach(a => a.classList.remove('current'));
+        const link = sidebarLinks.get(entry.target.id);
+        if (link) link.classList.add('current');
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    document.querySelectorAll('.poem').forEach(p => spy.observe(p));
   </script>
 </body>
 </html>
+       
+    
