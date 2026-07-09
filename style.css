@@ -12,13 +12,33 @@ body {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
-  overflow: visible !important;
 }
 .main-content {
   padding-top: 40px;
-  overflow: visible !important;
 }
-/* Top bar */
+#main {
+  scroll-margin-top: 170px;
+}
+
+/* Skip link (visible only when focused via keyboard) */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 2000;
+  background: #4a0000;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 0 0 6px 6px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Top bar — shrinks on scroll to free up reading space */
 .top-bar {
   position: fixed;
   top: 0;
@@ -28,6 +48,7 @@ body {
   background: #0a0a0a;
   z-index: 1000;
   border-bottom: 1px solid #1a1a1a;
+  transition: height 0.25s ease;
 }
 .header-container {
   display: flex;
@@ -35,6 +56,7 @@ body {
   justify-content: center;
   height: 100%;
   gap: 45px;
+  transition: gap 0.25s ease;
 }
 .header-headshot {
   width: 140px;
@@ -44,15 +66,35 @@ body {
   border-radius: 12px;
   border: 5px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 10px 35px rgba(0,0,0,0.7);
+  transition: width 0.25s ease, height 0.25s ease, border-width 0.25s ease;
 }
 .site-title {
   margin: 0;
   font-size: 4.8rem;
-  font-weight: 900;
+  font-weight: 800;
   color: #ffffff;
   letter-spacing: 11px;
   text-transform: uppercase;
+  white-space: nowrap;
+  transition: font-size 0.25s ease, letter-spacing 0.25s ease;
 }
+body.scrolled .top-bar {
+  height: 72px;
+}
+body.scrolled .header-container {
+  gap: 22px;
+}
+body.scrolled .header-headshot {
+  width: 48px;
+  height: 48px;
+  border-width: 3px;
+  border-radius: 8px;
+}
+body.scrolled .site-title {
+  font-size: 1.9rem;
+  letter-spacing: 6px;
+}
+
 /* Nav bar */
 .nav-bar {
   position: fixed;
@@ -62,27 +104,38 @@ body {
   height: 60px;
   background: #1a0000;
   z-index: 999;
+  transition: top 0.25s ease;
+}
+body.scrolled .nav-bar {
+  top: 72px;
 }
 .nav-bar .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  gap: 90px;
+  gap: 64px;
 }
 .nav-link {
-  color: #ffffff;
+  color: #bbbbbb;
   text-decoration: none;
   font-size: 1.25rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 3px;
-  transition: color 0.3s ease;
+  white-space: nowrap;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
-.nav-link:hover,
+.nav-link:hover {
+  color: #ffffff;
+}
 .nav-link.active {
-  color: #f0e0e0;
+  color: #ffffff;
+  border-bottom-color: #8a1515;
 }
+
 /* Hero */
 #hero {
   position: relative;
@@ -103,23 +156,28 @@ body {
   text-align: center;
   color: #ffffff;
   text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  width: 100%;
+  padding: 0 20px;
+}
+.hero-eyebrow {
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #e8dcdc;
+  margin: 0 0 14px;
 }
 .hero-overlay h2 {
-  font-size: 4.2rem;
-  margin: 0 0 15px;
+  font-size: 4.6rem;
+  margin: 0;
   letter-spacing: 2px;
 }
-.hero-overlay p {
-  font-size: 2.2rem;
-  margin: 0;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
+
 /* Tabs */
 .tab-section {
   display: none;
   padding: 80px 20px 60px;
-  scroll-margin-top: 280px;
+  scroll-margin-top: 170px;
 }
 .tab-section.active {
   display: block;
@@ -135,14 +193,19 @@ h2 {
   text-align: center;
 }
 iframe {
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
   width: 100%;
   max-width: 820px;
+  aspect-ratio: 16 / 9;
+  height: auto;
 }
-/* Top horizontal menu */
+
+/* Sonnet jump menu (pills) — mobile/tablet only; desktop uses the sidebar */
 .sonnet-nav.top-nav {
-  margin: 0 auto 50px;
+  display: none;
+  margin: 0 auto 40px;
   max-width: 1000px;
   text-align: center;
 }
@@ -153,67 +216,67 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 16px 32px;
+  gap: 12px 16px;
 }
 .sonnet-nav.top-nav li a {
+  display: block;
   color: #cccccc;
   text-decoration: none;
-  font-size: 1.15rem;
-  padding: 6px 10px;
+  font-size: 1.05rem;
+  padding: 6px 12px;
   border-radius: 6px;
+  background: rgba(40, 0, 0, 0.4);
   transition: all 0.2s ease;
 }
 .sonnet-nav.top-nav li a:hover {
   color: #ffffff;
-  background: rgba(74, 0, 0, 0.3);
+  background: rgba(74, 0, 0, 0.5);
 }
-/* Layout: left numbers + right poems */
+
+/* Layout: sticky numbers + poems, kept together as one centred column */
 .poems-layout {
   display: flex;
-  gap: 0; /* zero gap – numbers hard against red line */
-  max-width: 1400px;
+  gap: 18px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
-/* Left sidebar – discrete numbers only */
+/* Left sidebar — compact so all 30 fit on screen; scrolls if it can't */
 .sonnet-sidebar {
-  flex: 0 0 28px; /* ultra-narrow – numbers sit right next to red line */
+  flex: 0 0 48px;
   position: sticky;
-  top: 260px;
-  align-self: start;
+  top: 156px;
+  align-self: flex-start;
+  max-height: calc(100vh - 176px);
+  overflow-y: auto;
   text-align: right;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  max-height: none !important;
-  overflow: visible !important;
+  scrollbar-width: thin;
+  scrollbar-color: #333333 transparent;
 }
-
-/* Numbers – clean, full list */
 .sonnet-sidebar ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .sonnet-sidebar li {
-  margin: 28px 0; /* vertical spacing to align with poem blocks */
-}
-
-.sonnet-sidebar a {
-  display: block;
-  color: #555;
-  font-size: 1.05rem;
-  text-decoration: none;
-  transition: color 0.2s;
-  padding: 0;
   margin: 0;
 }
-
+.sonnet-sidebar a {
+  display: block;
+  color: #9a9a9a;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-decoration: none;
+  padding: 2px 10px 2px 4px;
+  border-right: 3px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
 .sonnet-sidebar a:hover {
-  color: #fff;
+  color: #ffffff;
+}
+.sonnet-sidebar a.current {
+  color: #ffffff;
+  border-right-color: #8a1515;
 }
 
 /* Main poems */
@@ -221,19 +284,17 @@ iframe {
   flex: 1;
   min-width: 0;
 }
-
 .poems-container {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0;
 }
 
-/* Poem styling – red line hard against numbers */
+/* Poem styling — red line sits beside the numbers */
 .poem {
   margin-bottom: 70px;
-  padding: 0 20px 0 0; /* no left padding – red line meets numbers */
-  scroll-margin-top: 240px;
+  padding: 0 20px 0 0;
+  scroll-margin-top: 170px;
 }
-
 .poem h3 {
   font-size: 2.4rem;
   margin: 0 0 8px;
@@ -241,22 +302,20 @@ iframe {
   text-align: center;
   letter-spacing: 1.2px;
 }
-
 .poem-text {
   font-size: 1.38rem;
   line-height: 2.0;
   color: #e0e0e0;
   text-align: left;
   max-width: 760px;
-  margin: 0 auto;
-  hyphens: auto;
+  margin: 0;
+  hyphens: none;
   background: rgba(20, 20, 20, 0.4);
   padding: 35px 45px;
   border-left: 4px solid #4a0000;
   border-radius: 0 8px 8px 0;
   box-shadow: 0 4px 25px rgba(0,0,0,0.5);
 }
-
 .poem-text br {
   content: "";
   margin-bottom: 1.2em;
@@ -324,10 +383,11 @@ iframe {
 footer {
   text-align: center;
   padding: 80px 20px;
-  color: #666666;
+  color: #999999;
   border-top: 1px solid #222222;
   font-size: 1rem;
 }
+
 /* General */
 a {
   color: #cccccc;
@@ -337,67 +397,96 @@ a {
 a:hover {
   color: #ffffff;
 }
+a:focus-visible {
+  outline: 2px solid #b34040;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 html {
   scroll-behavior: smooth;
 }
 
-/* MOBILE */
-@media (max-width: 1024px) {
-  .poems-layout {
-    flex-direction: column;
-    gap: 20px;
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-
-  .sonnet-sidebar {
-    position: static;
-    flex: none;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-  }
-
-  .sonnet-sidebar ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-  }
-
-  .sonnet-sidebar li {
-    margin: 0;
-  }
-
-  .sonnet-sidebar a {
-    font-size: 1rem;
-    padding: 4px 8px;
-    background: rgba(40, 0, 0, 0.4);
-    border-radius: 4px;
+  .top-bar,
+  .header-container,
+  .header-headshot,
+  .site-title,
+  .nav-bar,
+  .nav-link,
+  .skip-link,
+  .sonnet-sidebar a,
+  .sonnet-nav.top-nav li a {
+    transition: none;
   }
 }
 
+/* TABLET */
+@media (max-width: 1024px) {
+  .sonnet-nav.top-nav {
+    display: block;
+  }
+  .sonnet-sidebar {
+    display: none;
+  }
+  .poems-layout {
+    display: block;
+    max-width: 800px;
+  }
+  .poems-container {
+    margin: 0 auto;
+  }
+  .poem-text {
+    margin: 0 auto;
+  }
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
   body { font-size: 16px; }
   .container { padding: 0 20px; }
+  #main { scroll-margin-top: 135px; }
+
   .top-bar { height: 140px; }
   .header-headshot { width: 90px; height: 90px; }
   .site-title { font-size: 2.8rem; letter-spacing: 5px; }
   .header-container { gap: 30px; }
+  body.scrolled .top-bar { height: 60px; }
+  body.scrolled .header-headshot { width: 40px; height: 40px; border-width: 2px; }
+  body.scrolled .site-title { font-size: 1.35rem; letter-spacing: 3px; }
+  body.scrolled .header-container { gap: 16px; }
+
   .nav-bar { top: 140px; height: 50px; }
-  .nav-bar .container { gap: 30px; }
-  .nav-link { font-size: 0.95rem; }
+  body.scrolled .nav-bar { top: 60px; }
+  /* Nav scrolls sideways if the links don't fit; stays centred when they do */
+  .nav-bar .container {
+    justify-content: flex-start;
+    gap: 26px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-bar .container::-webkit-scrollbar { display: none; }
+  .nav-link { font-size: 0.9rem; letter-spacing: 2px; }
+  .nav-link:first-child { margin-left: auto; }
+  .nav-link:last-child { margin-right: auto; }
+
   #hero { margin-top: 190px; height: 48vh; min-height: 280px; }
-  .hero-overlay h2 { font-size: 2.4rem; }
-  .hero-overlay p { font-size: 1.6rem; }
+  .hero-eyebrow { font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 10px; }
+  .hero-overlay h2 { font-size: 2.6rem; }
+
   h2 { font-size: 2.6rem; }
   #bio p { font-size: 1.25rem; line-height: 1.85; }
   .bio-main-portrait { max-width: 380px; }
-  .player iframe { height: 200px; }
   .tab-section {
-    padding: 80px 15px 50px;
-    scroll-margin-top: 220px;
+    padding: 70px 15px 50px;
+    scroll-margin-top: 135px;
   }
-  .sonnet-nav.top-nav ul { gap: 12px 20px; }
-  .sonnet-nav.top-nav li a { font-size: 1rem; }
+  .sonnet-nav.top-nav ul { gap: 10px 12px; }
+  .sonnet-nav.top-nav li a { font-size: 0.95rem; padding: 5px 10px; }
+  .poem { scroll-margin-top: 135px; }
   .poem h3 { font-size: 2rem; }
   .poem-text {
     font-size: 1.25rem;
@@ -410,9 +499,12 @@ html {
 
 /* Very small screens */
 @media (max-width: 480px) {
-  .site-title { font-size: 2.6rem; }
+  .site-title { font-size: 2.4rem; letter-spacing: 4px; }
+  .header-container { gap: 20px; }
+  .nav-bar .container { gap: 20px; }
+  .nav-link { font-size: 0.82rem; letter-spacing: 1.5px; }
   .hero-overlay h2 { font-size: 2.2rem; }
-  .hero-overlay p { font-size: 1.5rem; }
+  .hero-eyebrow { font-size: 0.8rem; letter-spacing: 3px; }
   h2 { font-size: 2.4rem; }
   #bio p { font-size: 1.2rem; }
 }
